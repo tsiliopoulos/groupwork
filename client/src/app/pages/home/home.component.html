@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+      <div class="col">
+          <div class="row">
+              <h1 class="col">Room List</h1>
+              <button class="btn btn-secondary btn-lg col-3" (click)="onResetClicked()"><i class="fas fa-undo"></i> Reset</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+              <!-- Header Row-->
+              <tr>
+
+
+                  <th scope="col" class="text-center">
+                      <div ngbDropdown class="d-inline-block">
+                          <button class="btn btn-outline-primary col" id="building" ngbDropdownToggle>Building</button>
+                          <div ngbDropdownMenu>
+                            <button ngbDropdownItem *ngFor="let building of buildings" (click)="onChangeBulding(building)">{{ building }}</button>
+                          </div>
+                        </div>
+                  </th>
+                  <th scope="col" class="text-center">Room</th>
+                  <th scope="col" class="text-center">
+                      <div ngbDropdown class="d-inline-block">
+                          <button class="btn btn-outline-primary col" id="day" ngbDropdownToggle>Day</button>
+                          <div ngbDropdownMenu>
+                            <button ngbDropdownItem *ngFor="let day of days" (click)="onChangeDay(day)">{{ day }}</button>
+                          </div>
+                        </div>
+                  </th>
+                  <th scope="col" class="text-center">
+                      <div ngbDropdown class="d-inline-block">
+                          <button class="btn btn-outline-primary col" id="startTime" ngbDropdownToggle>Start Time</button>
+                          <div ngbDropdownMenu>
+                            <button ngbDropdownItem *ngFor="let startTime of startTimes" (click)="onChangeStartTime(startTime)">{{ startTime }}</button>
+                          </div>
+                        </div>
+                  </th>
+                  <th scope="col" class="text-center">
+                      <div ngbDropdown class="d-inline-block">
+                          <button class="btn btn-outline-primary col" id="endTime" ngbDropdownToggle>End Time</button>
+                          <div ngbDropdownMenu>
+                            <button ngbDropdownItem *ngFor="let endTime of endTimes" (click)="onChangeEndTime(endTime)">{{ endTime }}</button>
+                          </div>
+                        </div>
+                  </th>
+              </tr>
+
+              <!-- Repeatable Template Row -->
+                  <tr *ngFor="let room of rooms | courseCode: 'EMPTY' | building: (building) | day: (day) | startTime: (startTime) | endTime: (endTime) ">
+
+                        <td class="text-center">{{room.Building }}</td>
+                        <td class="text-center">{{room.Room }}</td>
+                        <td class="text-center">{{room.Day }}</td>
+                        <td class="text-center">{{room.TimeStart }}</td>
+                        <td class="text-center">{{room.TimeEnd }}</td>
+                  </tr>
+
+          </table>
+          </div>
+
+
+      </div>
+  </div>
+</div>
+
+

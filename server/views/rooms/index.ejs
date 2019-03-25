@@ -1,0 +1,50 @@
+<% include ../partials/header.ejs %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1><%= title %></h1>
+                <a class="btn btn-primary" href="/room-list/add" role="button">
+                <i class="fas fa-plus-circle"></i> Add a Room</a>
+                <br>
+                <table class="table table-bordered table-striped table-hover">
+                    <!-- Header Row-->
+                    <tr>
+                        <th class="text-center">Course Code</th>
+                        <th class="text-center">Building</th>
+                        <th class="text-center">Room</th>
+                        <th class="text-center">Day</th>
+                        <th class="text-center">Time Start</th>
+                        <th class="text-center">Time End</th>
+                        <th class="text-center"></th>
+                        <th class="text-center"></th>
+                    </tr>
+
+                    <!-- Repeatable Template Row -->
+                    <% for(let count = 0; count < roomList.length; count++) { %>
+                        <tr>
+                            <td class="text-center"><%= roomList[count].CourseCode %></td>
+                            <td class="text-center"><%= roomList[count].Building %></td>
+                            <td class="text-center"><%= roomList[count].Room %></td>
+                            <td class="text-center"><%= roomList[count].Day %></td>
+                            <td class="text-center"><%= roomList[count].TimeStart %></td>
+                            <td class="text-center"><%= roomList[count].TimeEnd %></td>
+
+                            <td class="text-center">
+                            <a href="/room-list/edit/<%= roomList[count]._id %>"
+                                class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>
+                            </td>
+
+                            <td class="text-center">
+                                    <a href="/room-list/delete/<%= roomList[count]._id %>"
+                                        class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Delete</a>
+                                    </td>
+                        </tr>
+                    <% } %>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+<% include ../partials/footer.ejs %>
