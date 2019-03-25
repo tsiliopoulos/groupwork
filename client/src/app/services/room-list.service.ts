@@ -9,7 +9,8 @@ import { Room } from '../models/room';
 })
 export class RoomListService {
 
-  private endpoint = 'http://localhost:3000/api/room-list/';
+  //private endpoint = 'http://localhost:3000/api/room-list/';
+  private endpoint = 'http://groupwork-ca.herokuapp.com/api/room-list/';
 
   private httpOptions = {
     headers: new HttpHeaders({
